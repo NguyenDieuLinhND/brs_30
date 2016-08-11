@@ -1,6 +1,10 @@
 <% provide :title, t("books.title") %>
 <h1><%= t "books.h1" %></h1>
 
+<div class="search">
+  <%= render "shared/form_filter_book", link: books_path %>
+</div>
+
 <div class="row books" >
   <%= render @books %>
 </div>
