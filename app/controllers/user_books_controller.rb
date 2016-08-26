@@ -13,7 +13,7 @@ class UserBooksController < ApplicationController
   end
 
   def update
-    if @user_book.update user_book_params
+    if @user_book.update_attributes user_book_params
       flash[:success] = t "flash.mark_book_success"
     else
       flash[:danger] = t "flash.cant_create_request_status"
@@ -23,7 +23,7 @@ class UserBooksController < ApplicationController
 
   private
   def find_user_book
-    @user_book = current_user.user_books.find_by book_id: params[:id]
+    @user_book = current_user.user_books.find_by id: params[:id]
     if @user_book.nil?
       flash[:danger] = t "flash.cant_find_userbook"
       redirect_to book_path
@@ -31,6 +31,6 @@ class UserBooksController < ApplicationController
   end
 
   def user_book_params
-    params.require(:user_book).permit :read_status, :favorite, :book_id
+    params.require(:user_book).permit :id, :read_status, :favorite, :book_id
   end
 end

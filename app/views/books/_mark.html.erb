@@ -18,7 +18,6 @@
     <%= f.hidden_field :book_id, value: @user_book.book_id %>
     <%= f.hidden_field :favorite, value: !@user_book.favorite %>
     <%= f.submit t("btn.#{@user_book.favorite ? "unfavorite" : "favorite"}"),
-      class: "#{favorite_status @user_book}",
-      id: "btn-favorite" %>
+      class: "#{favorite_status @user_book}", id: "btn-favorite" %>
   </div>
 <% end %>
