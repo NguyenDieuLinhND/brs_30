@@ -16,7 +16,8 @@ class BooksController < ApplicationController
     else
       Book.all
     end
-    @books = @books.paginate page: params[:page], per_page: Settings.size_book
+    @books = @books.order("updated_at DESC").paginate page: params[:page],
+      per_page: Settings.size_book
   end
 
   def show
